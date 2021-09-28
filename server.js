@@ -1,20 +1,18 @@
-const express = require('express');
+const express = require("express");
+//Set up server
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-//set up server
-
-const app = express ();
-const PORT = process.env.PORT || 3001;
-
-//setting up express app to handle data parsing;
-app.use(express.urlencoded({ extended: true}));
+// Sets up the Express app to handle data parsing
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
 require("./routes/htmlRoutes")(app);
-require("./routes/apiRoutes")(app);
+require("./routes/apiRoute")(app);
 
-//start the server
+// Starts the server to begin listening
+// =============================================================
 app.listen(PORT, () => {
-    console.log("Application is now listening on PORT" + " " + PORT)
+  console.log("App listening on PORT " + PORT);
 });
-
